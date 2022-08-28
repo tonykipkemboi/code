@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -14,13 +14,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Approval
-        - DelegateChanged
-        - DelegateVotesChanged
-        - RoleAdminChanged
-        - RoleGranted
-        - RoleRevoked
-        - Sweep20
-        - Sweep721
         - Transfer
       abis:
         - name: Contract
@@ -28,20 +21,6 @@ dataSources:
       eventHandlers:
         - event: Approval(indexed address,indexed address,uint256)
           handler: handleApproval
-        - event: DelegateChanged(indexed address,indexed address,indexed address)
-          handler: handleDelegateChanged
-        - event: DelegateVotesChanged(indexed address,uint256,uint256)
-          handler: handleDelegateVotesChanged
-        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
-          handler: handleRoleAdminChanged
-        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleGranted
-        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
-          handler: handleRoleRevoked
-        - event: Sweep20(address,address)
-          handler: handleSweep20
-        - event: Sweep721(address,address,uint256)
-          handler: handleSweep721
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/mapping.ts
